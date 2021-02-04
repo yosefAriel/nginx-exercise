@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  custom_web_page:
+    image: proxy
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    volumes:
+      - ./:/usr/share/nginx/html/
+  webapp:
+    image: tutum/hello-world
+    ports:
+      - "80"
