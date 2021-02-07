@@ -14,4 +14,4 @@ do
   fi 
   sleep 10s
 DATE=`date '+%Y%m%d'`
-done 
+done
