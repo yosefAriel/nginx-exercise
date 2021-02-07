@@ -2,10 +2,16 @@
 
 docker-compose up -d --build
 
-date=`date '+%Y-%m-%d'`
-echo $date 
+START_DATE=`date '+%Y%m%d'` 
+DATE=`date '+%Y%m%d'`
 
-while [ $date -eq `date '+%Y-%m-%d'` ]
+while [ "$START_DATE" = "$DATE" ]
 do
-   curl 
+  if [ `curl -o -I -L -s -w "%{http_code}" http://localhost/app` -eq "200" ] ; then
+	echo "Endpoint up"
+  else 
+	echo "Endpoint down"
+  fi 
+  sleep 10s
+DATE=`date '+%Y%m%d'`
 done 
